@@ -25,30 +25,32 @@
 
 #### 구현 가이드
 
-**QR 코드 생성 및 이미지 저장**
+- **exercise 폴더에서 기본적인 파일 입출력 실습을 먼저 진행해주세요**
 
-```python
-import qrcode
+- **QR 코드 생성 및 이미지 저장**
 
-# QR 코드 생성
-qr = qrcode.QRCode(
-  version=1,  # QR 코드의 버전 (1~40) 크기를 조절합니다.
-  error_correction=qrcode.constants.ERROR_CORRECT_L,  # 오류 보정 수준
-  box_size=10,  # QR 코드 각 박스의 픽셀 크기
-  border=4,  # QR 코드의 테두리 두께
-)
+  ```python
+  import qrcode
 
-# 텍스트 파일의 내용을 이용하여 QR 코드 생성
-with open('./assets/custom_kitten_poetry.txt', 'r', encoding='utf-8') as file:
-  text = file.read()
-  qr.add_data(text)
-  qr.make(fit=True)
+  # QR 코드 생성
+  qr = qrcode.QRCode(
+    version=1,  # QR 코드의 버전 (1~40) 크기를 조절합니다.
+    error_correction=qrcode.constants.ERROR_CORRECT_L,  # 오류 보정 수준
+    box_size=10,  # QR 코드 각 박스의 픽셀 크기
+    border=4,  # QR 코드의 테두리 두께
+  )
 
-img = qr.make_image(fill_color="black", back_color="white")
+  # 텍스트 파일의 내용을 이용하여 QR 코드 생성
+  with open('./assets/custom_kitten_poetry.txt', 'r', encoding='utf-8') as file:
+    text = file.read()
+    qr.add_data(text)
+    qr.make(fit=True)
 
-# QR 코드 이미지를 화면에 표시
-img.show()
+  img = qr.make_image(fill_color="black", back_color="white")
 
-# QR 코드 이미지 저장 (선택적)
-# img.save("../assets/kitten_poetry_qr.png")
-```
+  # QR 코드 이미지를 화면에 표시
+  img.show()
+
+  # QR 코드 이미지 저장 (선택적)
+  # img.save("../assets/kitten_poetry_qr.png")
+  ```
