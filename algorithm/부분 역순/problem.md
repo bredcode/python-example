@@ -11,3 +11,16 @@ k: 3
 #### 출력 예시:
 
 [3, 2, 1, 6, 5, 4, 9, 8, 7]
+
+### 샘플 코드
+
+```python
+def solution(numbers, k):
+  result = []
+
+  print(result)
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+k = 3
+solution(numbers, k)
+```
