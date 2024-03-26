@@ -32,3 +32,26 @@
 ```python
 [-1, 5, 6]
 ```
+
+### 샘플 코드
+
+```python
+def solution(arr):
+  # 코드 작성
+  return arr
+
+arr = [
+  {"type": "planet", "dist": 10},
+  {"type": "star", "dist": -3},
+  {"type": "milkyway", "dist": 2},
+  {"type": "planet", "dist": 5},
+  {"type": "planet", "dist": -7},
+  {"type": "star", "dist": 4},
+  {"type": "planet", "dist": 6},
+  {"type": "planet", "dist": -1},
+  {"type": "star", "dist": 8},
+  {"type": "milkyway", "dist": -9}
+]
+
+print(solution(arr))
+```
