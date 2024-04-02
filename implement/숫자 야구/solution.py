@@ -25,7 +25,7 @@ def get_guess():
             print("범위를 벗어나는 숫자입니다. 다시 입력하세요.")
             continue
         if number in guess:
-            print("중복되는 숫자입니다. 다시 입력하세요. ")
+            print("중복되는 숫자입니다. 다시 입력하세요.")
         else:
             guess.append(number)
             i += 1
