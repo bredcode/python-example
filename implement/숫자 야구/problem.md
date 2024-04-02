@@ -20,3 +20,56 @@
 3.  사용자가 입력한 숫자와 컴퓨터가 선택한 숫자를 비교하여 스트라이크와 볼의 수를 알려줍니다.
 4.  사용자가 컴퓨터의 숫자를 모두 맞출 때까지 2-3번 과정을 반복합니다.
 5.  게임이 끝나면 사용자가 몇 번 만에 숫자를 모두 맞췄는지 알려줍니다.
+
+### 샘플 코드
+
+```python
+from random import randint
+
+def generate_answer():
+    answer = []
+
+    # 코드 작성
+
+    print("1과 9 사이의 서로 다른 숫자 3개를 랜덤한 순서로 뽑았습니다.\n")
+    return answer
+
+
+def get_guess():
+    print("숫자 3개를 하나씩 차례대로 입력하세요.")
+    guess = []
+
+    # 코드 작성
+
+    return guess
+
+
+def get_score(guess, solution):
+    strike_count = 0
+    ball_count = 0
+
+    # 코드 작성
+
+    return strike_count, ball_count
+
+def main():
+    tries = 0
+    answer = generate_answer()
+
+    while 1:
+        guess = get_guess()
+        strike, ball = get_score(guess, answer)
+        print("{}S {}B ".format(strike, ball))
+
+        if strike == 3:
+            tries += 1
+            break
+        else:
+            tries += 1
+
+    print("축하합니다. {}번 만에 숫자 3개의 값과 위치를 모두 맞추셨습니다.".format(tries))
+
+if __name__ == "__main__":
+    main()
+
+```

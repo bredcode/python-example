@@ -1,6 +1,5 @@
 from random import randint
 
-
 def generate_answer():
     answer = []
     number = 0
