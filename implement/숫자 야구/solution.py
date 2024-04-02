@@ -17,30 +17,30 @@ def generate_answer():
 
 def get_guess():
     print("숫자 3개를 하나씩 차례대로 입력하세요.")
-    i = 0
     guess = []
+    i = 0
     while i < 3:
-        gue_number = int(input("{}번째 숫자를 입력하세요: ".format(i + 1)))
-        if not (1 <= gue_number <= 9):
+        number = int(input("{}번째 숫자를 입력하세요: ".format(i + 1)))
+        if not (1 <= number <= 9):
             print("범위를 벗어나는 숫자입니다. 다시 입력하세요.")
             continue
-        if gue_number in guess:
+        if number in guess:
             print("중복되는 숫자입니다. 다시 입력하세요. ")
         else:
-            guess.append(gue_number)
+            guess.append(number)
             i += 1
 
     return guess
 
 
-def get_score(guess, solution):
+def get_score(guess, answer):
     strike_count = 0
     ball_count = 0
 
     for i in range(3):
-        if guess[i] == solution[i]:
+        if guess[i] == answer[i]:
             strike_count += 1
-        elif guess[i] in solution:
+        elif guess[i] in answer:
             ball_count += 1
 
     return strike_count, ball_count
