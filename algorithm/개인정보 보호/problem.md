@@ -12,3 +12,19 @@
 | ----------------------- | --------------------------- |
 | "example@gmail.com"     | "**\*\*\***@gmail.com"      |
 | "my.email@domain.co.kr" | "**\*\*\*\***@domain.co.kr" |
+
+### 샘플 코드
+
+```python
+def solution(email_address):
+  # 코드 작성
+
+test_cases = [
+    "example@gmail.com",
+    "my.email@domain.co.kr"
+]
+
+for test in test_cases:
+  result = solution(test)
+  print(result)
+```
