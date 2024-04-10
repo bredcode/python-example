@@ -75,6 +75,15 @@
 - 따라서 총합인 6을 두 번째 인덱스에 저장합니다.
 - 결과적으로 [4, 6]을 return 합니다.
 
+### 샘플 코드
+
+```python
+def solution(keymap, targets):
+    # 코드 작성
+
+print(solution(["ABACD", "BCEFD"], ["ABCD","AABB"])) # [9,4]
+```
+
 ---
 
 문제 출처 : https://school.programmers.co.kr/learn/courses/30/lessons/160586

@@ -24,3 +24,5 @@ def solution(keymap, targets):
         answer.append(count)
 
     return answer
+
+print(solution(["ABACD", "BCEFD"], ["ABCD","AABB"]))
