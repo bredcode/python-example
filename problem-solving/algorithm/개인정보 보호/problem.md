@@ -8,10 +8,10 @@
 
 ### 입출력 예
 
-| email_address           | return                      |
-| ----------------------- | --------------------------- |
-| "example@gmail.com"     | "**\*\*\***@gmail.com"      |
-| "my.email@domain.co.kr" | "**\*\*\*\***@domain.co.kr" |
+| email_address           | return                          |
+| ----------------------- | ------------------------------- |
+| "example@gmail.com"     | "\*\*\*\*\*\*\*@gmail.com"      |
+| "my.email@domain.co.kr" | "\*\*\*\*\*\*\*\*@domain.co.kr" |
 
 ### 샘플 코드
 
