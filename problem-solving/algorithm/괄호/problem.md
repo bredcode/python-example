@@ -12,6 +12,18 @@
 
 출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다.
 
+## 샘플 코드
+
+```python
+def solution(ps):
+  # 코드 작성
+
+n = int(input())
+for i in range(n):
+    ps = input()
+    solution(ps)
+```
+
 #### 예제 입력 1
 
 ```text
