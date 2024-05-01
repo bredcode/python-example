@@ -89,6 +89,8 @@ class Object():
 - Player 클래스는 Object를 상속받는다.
 - player은 생성자에서 name 인자만 받고, 부모 클래스의 생성자에게 이름 name, 체력 100, 공격력 10 의 파라미터를 전달해준다.
 
+  - 이때 Player에서 값들을 할당하지 않고 반드시 부모 클래스의 생성자를 호출한다.
+
 - displayInfo 함수를 생성한다. 이때 부모 클래스에서 objType를 처리하기에 Player 클래스에서는 objType을 기본값으로 None을 받도록 하고 부모 함수를 호출하여 "플레이어"라는 파라미터를 보내도록 한다.
   - 힌트: 부모의 displayInfo("플레이어")
 - attack라는 함수는 자기 자신의 atk를 리턴하도록 한다.
@@ -111,6 +113,7 @@ class Object():
   - 체력 hp는 random 모듈의 randint를 이용하여 `10 ~ 20` 사이 값이 구성되게 해준다.
   - 공격력 atk는 random 모듈의 randint를 이용하여 `1 ~ 5` 사이 값이 구성되개 해준다.
   - 위 값들을 부모 클래스의 생성자에게 전달해주어 Monster 객체를 생성한다.
+    - 이때 Player에서 값들을 할당하지 않고 반드시 부모 클래스의 생성자를 호출한다.
 
 - displayInfo 함수를 생성한다. 이때 부모 클래스에서 objType를 처리하기에 Monster 클래스에서는 objType을 기본값으로 None을 받도록 하고 부모 함수를 호출하여 "몬스터"라는 파라미터를 보내도록 한다.
 
