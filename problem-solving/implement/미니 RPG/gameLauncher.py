@@ -14,10 +14,8 @@ class GameLauncher():
                 case "1":
                     self.play()
                 case "2":
-                    self.save()
-                case "3":
                     self.load()
-                case "4":
+                case "3":
                     self.exit()
                 case _: # default
                     continue
@@ -26,8 +24,7 @@ class GameLauncher():
         print("===== 미니 RPG =====")
         print("=    1. 새 게임    =")
         print("=    2. 불러오기   =")
-        print("=    3. 저장하기   =")
-        print("=    4. 게임종료   =")
+        print("=    3. 게임종료   =")
         print("====================")
 
     def play(self):
