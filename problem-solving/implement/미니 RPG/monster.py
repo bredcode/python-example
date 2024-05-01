@@ -10,7 +10,7 @@ class Monster(Object):
         atk = random.randint(1, 5)
         super().__init__(name, hp, atk)
     
-    def displayInfo(self, type = None):
+    def displayInfo(self, objType = None):
         super().displayInfo("몬스터")
 
     def attack(self):
