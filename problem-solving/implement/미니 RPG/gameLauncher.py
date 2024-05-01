@@ -47,7 +47,7 @@ class GameLauncher():
                     monster.displayInfo()
                     # time.sleep(3)
                     while True:
-                        print("나의 공격 차례입니다.")
+                        print("플레이어의 공격 차례입니다.")
                         # time.sleep(2)
                         monster.takeDamage(self.player)
                         if monster.isDead():
