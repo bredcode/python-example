@@ -58,7 +58,7 @@ python을 배우고 나서 간단한 프로젝트를 해보기 위해 미니 RPG
 
    (아래 내용 진행 전, object.py, player.py, monster.py 생성)
 
-- player, monster는 이름(name), 체력(hp), 공격력(atk) 라는 변수를 가진 object 라는 클래스를 상속받는다.
+- player, monster는 이름(name), 체력(hp), 공격력(atk) 라는 멤버 변수를 가진 object 라는 클래스를 상속받는다.
 
 - object 클래스는 다음과 같은 함수를 가지고 있고, 아래 조건에 맞게 작성해보자.
 
