@@ -41,6 +41,7 @@ python을 배우고 나서 간단한 프로젝트를 해보기 위해 미니 RPG
 3. GameLauncher 클래스 내 run이라는 함수를 작성하여 게임을 실행할 수 있는 기반을 만든다.
 
 - run 함수는 다음과 같은 형태로 작성한다.
+- 앞서 작성한 displayLauncher() 함수를 호출한다.
 - `원하는 번호를 입력해주세요 : `라는 안내와 함께 select라는 변수에 값을 받는다.
 - "1"이면 play "2"면 load "3"이면 exit 함수를 호출고 그 외의 값인 경우 (case가 \_ 인 경우가 그 외의 값을 의미) 무시하도록 한다.
 - 이때, play, load, exit는 GameLauncher 내 함수로 만들고 아무 로직 없이 return만 해두도록 한다.
