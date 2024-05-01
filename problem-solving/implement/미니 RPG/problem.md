@@ -51,7 +51,9 @@ python을 배우고 나서 간단한 프로젝트를 해보기 위해 미니 RPG
 
 - python 프로그램을 runtime에서 어떻게 코드로 종료할 수 있는지 검색하여 작성해보자.
 
-5. play 함수를 구현하기 전, player와 monster 객체를 구현하고자 한다.
+5. 이제 main 함수에서 GameLauncher을 생성하여 run함수를 실행하여 여러 버튼을 누르고 마지막으로 3번을 누르면 종료가 되는지 해보자.
+
+6. play 함수를 구현하기 전, player와 monster 객체를 구현하고자 한다.
 
 - player, monster는 이름(name), 체력(hp), 공격력(atk) 라는 변수를 가진 object 라는 클래스를 상속받는다.
 
