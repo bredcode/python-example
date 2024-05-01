@@ -45,6 +45,7 @@ python을 배우고 나서 간단한 프로젝트를 해보기 위해 미니 RPG
 - "1"이면 play "2"면 load "3"이면 exit 함수를 호출고 그 외의 값인 경우 (case가 \_ 인 경우가 그 외의 값을 의미) 무시하도록 한다.
 - 이때, play, load, exit는 GameLauncher 내 함수로 만들고 아무 로직 없이 return만 해두도록 한다.
 - python에는 switch / case문이 아닌 match / case문이 존재한다. 위 조건을 처리할 때, 이를 활용해보자.
+- 그 후 위 로직은 `3. 게임종료` 가 호출되기전까지 무한 반복된다.
 
 4. 간단한 exit 함수부터 구현한다.
 
