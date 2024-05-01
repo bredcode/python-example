@@ -7,17 +7,17 @@ class Monster(Object):
     def __init__(self):
         name = random.choice(names)
         hp = random.randint(10, 20)
-        damage = random.randint(1, 5)
-        super().__init__(name, hp, damage)
+        atk = random.randint(1, 5)
+        super().__init__(name, hp, atk)
     
     def displayInfo(self, type = None):
         super().displayInfo("몬스터")
 
     def attack(self):
-        return self.damage
+        return self.atk
 
     def takeDamage(self, obj):
         self.hp -= obj.attack()
-        print(f"{obj.name}에게 {obj.damage}의 피해를 입었습니다!")
+        print(f"{obj.name}에게 {obj.atk}의 피해를 입었습니다!")
         self.displayInfo()
         return

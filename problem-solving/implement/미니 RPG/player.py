@@ -8,10 +8,10 @@ class Player(Object):
         super().displayInfo("플레이어")
 
     def attack(self):
-        return self.damage
+        return self.atk
 
     def takeDamage(self, obj):
         self.hp -= obj.attack()
-        print(f"{obj.name}에게 {obj.damage}의 피해를 입었습니다!")
+        print(f"{obj.name}에게 {obj.atk}의 피해를 입었습니다!")
         self.displayInfo()
         return
