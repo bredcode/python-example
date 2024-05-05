@@ -49,13 +49,13 @@ class GameLauncher():
                     while True:
                         print("플레이어의 공격 차례입니다.")
                         # time.sleep(2)
-                        monster.takeDamage(self.player)
+                        self.player.attack(monster)
                         if monster.isDead():
                             print("몬스터가 죽었습니다!")
                             break
                         print("몬스터의 공격 차례입니다.")
                         # time.sleep(2)
-                        self.player.takeDamage(monster)
+                        monster.attack(self.player)
                         if self.player.isDead():
                             print("플레이어가 죽었습니다!")
                             print("GAME OVER")
@@ -67,15 +67,13 @@ class GameLauncher():
                     self.exit()
                 case _: # default
                     continue
-            
-
         return
     def save(self):
 
-            return
+        return
     def load(self):
 
-            return
+        return
     def exit(self):
         exit(0)
 

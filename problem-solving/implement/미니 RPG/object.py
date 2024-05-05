@@ -10,12 +10,13 @@ class Object():
         print(f"체력: {self.hp}")
         print(f"공격력: {self.atk}")
 
-    def attack(self):
-        return self.atk
+    def takeDamage(self, target):
+        self.hp -= target.atk
+        print(f"{target.name}에게 {target.atk}의 피해를 입었습니다!")
+        self.displayInfo()
 
-    def takeDamage(self, atk):
-        self.hp -= atk
-        return
+    def attack(self, target):
+        target.takeDamage(self)
 
     def isDead(self):
         return self.hp <= 0

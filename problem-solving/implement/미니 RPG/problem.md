@@ -74,17 +74,19 @@ class Object():
       체력: {현재 체력}
       공격력: {현재 공격력}
 
-    def attack(self):
-      # 현재 공격력(atk)를 리턴
+    def takeDamage(self, target):
+      # 현재 체력에서 상대(obj)에게 받은 공격력(atk)을 차감
+      # {target의 name}에게 {target의 atk}의 피해를 입었습니다! 출력
+      # displayInfo 출력
 
-    def takeDamage(self, atk):
-      # 현재 체력에서 상대에게 받은 공격력(atk)을 차감
+    def attack(self, target):
+      # 타겟에게 피해를 입힘 (takeDamage 사용)
 
     def isDead(self):
       # 체력이 0 이하면 true, 그게 아니면 false
 ```
 
-6. Player 클래스를 구현하고자 한다.
+7. Player 클래스를 구현하고자 한다.
 
 - Player 클래스는 Object를 상속받는다.
 - player은 생성자에서 name 인자만 받고, 부모 클래스의 생성자에게 이름 name, 체력 100, 공격력 10 의 파라미터를 전달해준다.
@@ -94,13 +96,6 @@ class Object():
 - displayInfo 함수를 생성한다. 이때 부모 클래스에서 objType를 처리하기에 Player 클래스에서는 objType을 기본값으로 None을 받도록 하고 부모 함수의 displayInfo를 호출하여 "플레이어"라는 파라미터를 보내도록 한다.
   - 힌트: 부모의 displayInfo("플레이어")
 - attack라는 함수는 자기 자신의 atk를 리턴하도록 한다.
-
-7. takeDamage 함수를 구현한다.
-
-- takeDamage 인자는 obj를 받는다.
-- 내부 로직은 상대방(obj)의 공격력 만큼 플레이어 체력을 차감한다.
-- 그리고 `{상대방 이름}에게 {상대방 공격력}의 피해를 입었습니다!`를 출력한다.
-- 마지막으로 displayInfo 함수를 호출하여 플레이어 정보를 보여준다.
 
 8. Monster 클래스를 구현하고자 한다.
 
@@ -119,16 +114,7 @@ class Object():
 
   - 힌트: 부모의 displayInfo("몬스터")
 
-- attack라는 함수는 자기 자신의 atk를 리턴하도록 한다.
-
-9. takeDamage 함수를 구현한다.
-
-- takeDamage 인자는 obj를 받는다.
-- 내부 로직은 상대방(obj)의 공격력 만큼 몬스터 체력을 차감한다.
-- 그리고 `{상대방 이름}에게 {상대방 공격력}의 피해를 입었습니다!`를 출력한다.
-- 마지막으로 displayInfo 함수를 호출하여 몬스터 정보를 보여준다.
-
-10. gameLauncher의 play 함수 구현하기
+9. gameLauncher의 play 함수 구현하기
 
 - play 함수는 게임이 실행되는 부분이다.
 - 첫번째로 GameLauncher의 멤버변수로 player을 None으로 생성해준다.
