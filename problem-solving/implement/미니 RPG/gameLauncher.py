@@ -1,6 +1,6 @@
 from player import Player
 from monster import Monster
-import time
+import json
 
 class GameLauncher():
     def __init__(self):
@@ -28,8 +28,9 @@ class GameLauncher():
         print("====================")
 
     def play(self):
-        name = input("캐릭터 이름을 입력해주세요 : ")
-        self.player = Player(name)
+        if not self.player:
+            name = input("캐릭터 이름을 입력해주세요 : ")
+            self.player = Player(name)
 
         while True:
             self.player.displayInfo()
@@ -69,10 +70,25 @@ class GameLauncher():
                     continue
         return
     def save(self):
+        playerData = {
+            "name": self.player.name,
+            "hp": self.player.hp,
+            "atk": self.player.atk 
+        }
 
+        saveData = json.dumps(playerData)
+        with open('saveData.json', 'w') as file:
+            file.write(saveData)
         return
     def load(self):
-
+        try:
+            with open('saveData.json', 'r') as file:
+                saveData = file.read()
+                playerData = json.loads(saveData)
+                self.player = Player(playerData["name"], playerData["hp"], playerData["atk"])
+                self.play()
+        except Exception as e:
+            print("[ERROR] 저장된 파일이 없습니다.")
         return
     def exit(self):
         exit(0)
