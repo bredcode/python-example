@@ -11,9 +11,15 @@ class LinkedList:
 
     def insert_first(self, data):
         new_node = Node(data, self.head)
-        self.head = new_node
+        
         if self.is_empty():
+            self.head = new_node
             self.tail = new_node
+            self.size += 1
+            return
+        
+        new_node.next = self.head
+        self.head = new_node
         self.size += 1
 
     def insert_last(self, data):
@@ -29,12 +35,12 @@ class LinkedList:
         if idx == 1:
             self.insert_first(data)
             return
-        if idx > self.size + 1:
-            raise IndexError("Index out of bounds")
+        if idx > self.size:
+            raise IndexError("out of index")
         
         new_node = Node(data)
         current = self.head
-        for _ in range(idx - 2):
+        for _ in range(idx - 1):
             current = current.next
         
         new_node.next = current.next
@@ -46,10 +52,13 @@ class LinkedList:
     def remove_first(self):
         if self.is_empty():
             return
+        if self.size == 1:
+            self.head = self.tail = None
+            self.size -= 1
+            return
+
         self.head = self.head.next
         self.size -= 1
-        if self.is_empty():
-            self.tail = None
 
     def remove_last(self):
         if self.is_empty():
