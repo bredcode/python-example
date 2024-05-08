@@ -13,7 +13,7 @@ class Object():
     def takeDamage(self, target):
         self.hp -= target.atk
         print(f"{target.name}에게 {target.atk}의 피해를 입었습니다!")
-        self.displayInfo()
+        self.displayInfo(self.name)
 
     def attack(self, target):
         target.takeDamage(self)

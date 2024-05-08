@@ -95,7 +95,6 @@ class Object():
 
 - displayInfo 함수를 생성한다. 이때 부모 클래스에서 objType를 처리하기에 Player 클래스에서는 objType을 기본값으로 None을 받도록 하고 부모 함수의 displayInfo를 호출하여 "플레이어"라는 파라미터를 보내도록 한다.
   - 힌트: 부모의 displayInfo("플레이어")
-- attack라는 함수는 자기 자신의 atk를 리턴하도록 한다.
 
 8. Monster 클래스를 구현하고자 한다.
 
