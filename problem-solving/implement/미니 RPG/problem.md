@@ -48,13 +48,15 @@ python을 배우고 나서 간단한 프로젝트를 해보기 위해 미니 RPG
 - python에는 switch / case문이 아닌 match / case문이 존재한다. 위 조건을 처리할 때, 이를 활용해보자.
 - 그 후 위 로직은 `3. 게임종료` 가 호출되기전까지 무한 반복된다.
 
-4. 간단한 exit 함수부터 구현한다.
+4. save와 load 함수는 정의만 해둔 채, 우선은 로직 없이 return해둔다.
+
+5. 간단한 exit 함수부터 구현한다.
 
 - python 프로그램을 runtime에서 어떻게 코드로 종료할 수 있는지 검색하여 작성해보자.
 
-5. 이제 main 함수에서 GameLauncher을 생성하여 run함수를 실행하여 여러 버튼을 누르고 마지막으로 3번을 누르면 종료가 되는지 해보자.
+6. 이제 main 함수에서 GameLauncher을 생성하여 run함수를 실행하여 여러 버튼을 누르고 마지막으로 3번을 누르면 종료가 되는지 해보자.
 
-6. play 함수를 구현하기 전, player와 monster 객체를 구현하고자 한다.
+7. play 함수를 구현하기 전, player와 monster 객체를 구현하고자 한다.
 
    (아래 내용 진행 전, object.py, player.py, monster.py 생성)
 
@@ -86,7 +88,7 @@ class Object():
       # 체력이 0 이하면 true, 그게 아니면 false
 ```
 
-7. Player 클래스를 구현하고자 한다.
+8. Player 클래스를 구현하고자 한다.
 
 - Player 클래스는 Object를 상속받는다.
 - player은 생성자에서 name 인자만 받고, 부모 클래스의 생성자에게 이름 name, 체력 100, 공격력 10 의 파라미터를 전달해준다.
@@ -96,7 +98,7 @@ class Object():
 - displayInfo 함수를 생성한다. 이때 부모 클래스에서 objType를 처리하기에 Player 클래스에서는 objType을 기본값으로 None을 받도록 하고 부모 함수의 displayInfo를 호출하여 "플레이어"라는 파라미터를 보내도록 한다.
   - 힌트: 부모의 displayInfo("플레이어")
 
-8. Monster 클래스를 구현하고자 한다.
+9. Monster 클래스를 구현하고자 한다.
 
 - monster.py의 전역변수로 names라는 리스트를 생성하고 `"슬라임", "오크", "좀비", "고블린"`의 값이 들어가도록 해준다.
 
@@ -114,7 +116,7 @@ class Object():
 
     - 힌트: 부모의 displayInfo("몬스터")
 
-9. gameLauncher의 play 함수 구현하기
+10. gameLauncher의 play 함수 구현하기
 
 - play 함수는 게임이 실행되는 부분이다.
 - 첫번째로 GameLauncher의 멤버변수로 player을 None으로 생성해준다.
@@ -152,7 +154,7 @@ class Object():
 - 리팩토링 되어야할 사항
   - Player와 Monster의 체력이 음수 출력이 될 수 있다. 체력이 음수가 되는 경우 0을 출력하게 해주자.
 
-10. save 함수 구현하기
+11. save 함수 구현하기
 
 - 플레이어의 상태를 저장하는 부분
 - 현재 가지고 있는 name, hp, atk를 저장하고자 한다.
@@ -161,7 +163,7 @@ class Object():
   - json 모듈의 json.dumps를 이용하여 dict를 str 형태로 변환해준다.
   - 변환된 str 데이터를 `saveData.json`에 저장한다.
 
-11. load 함수 구현하기
+12. load 함수 구현하기
 
 - 플레이어의 상태를 불러오는 부분
 - 저장된 플레이어의 정보를 가져오고자 한다.

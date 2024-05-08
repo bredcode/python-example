@@ -69,6 +69,7 @@ class GameLauncher():
                 case _: # default
                     continue
         return
+
     def save(self):
         playerData = {
             "name": self.player.name,
@@ -80,6 +81,7 @@ class GameLauncher():
         with open('saveData.json', 'w') as file:
             file.write(saveData)
         return
+
     def load(self):
         try:
             with open('saveData.json', 'r') as file:
@@ -90,6 +92,7 @@ class GameLauncher():
         except Exception as e:
             print("[ERROR] 저장된 파일이 없습니다.")
         return
+
     def exit(self):
         exit(0)
 
