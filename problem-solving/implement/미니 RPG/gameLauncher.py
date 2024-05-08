@@ -43,8 +43,8 @@ class GameLauncher():
             select = input("원하는 번호를 입력해주세요 : ")
             match(select):
                 case "1":
-                    monster = Monster()
                     print("몬스터가 나타났다!")
+                    monster = Monster()
                     monster.displayInfo()
                     # time.sleep(3)
                     while True:
