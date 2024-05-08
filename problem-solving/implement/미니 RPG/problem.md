@@ -75,7 +75,7 @@ class Object():
       공격력: {현재 공격력}
 
     def takeDamage(self, target):
-      # 현재 체력에서 상대(obj)에게 받은 공격력(atk)을 차감
+      # 현재 체력에서 상대(target)에게 받은 공격력(atk)을 차감
       # {target의 name}에게 {target의 atk}의 피해를 입었습니다! 출력
       # displayInfo 출력
 
