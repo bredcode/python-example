@@ -12,6 +12,7 @@ class Object():
 
     def takeDamage(self, target):
         self.hp -= target.atk
+        self.hp = max(self.hp, 0)
         print(f"{target.name}에게 {target.atk}의 피해를 입었습니다!")
         self.displayInfo(self.name)
 
