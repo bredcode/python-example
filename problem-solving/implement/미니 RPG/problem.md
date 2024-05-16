@@ -267,3 +267,33 @@ class Object():
 
 - 현재 `object.py`의 `displayInfo` 함수에 `self.displayInfo(self.name)`로 되어있다. 이때 그럼 self.name이 출력되어야 할 것 같은데 왜 "플레이어" 혹은 "몬스터" 가 출력되는지 생각해보자.
 - self.name을 지워도 출력이 잘 되는 이유를 생각해보자.
+
+18. 개발자 모드
+
+- 개발자 모드를 통해 개발 중 게임과 실제 플레이 게임을 구분해보고자 한다.
+- `gameLauncher.py` 상단에 `GAME_MODE` 전역변수를 만들고 MODE_DEV = "
+  DEV", MODE_NORMAL = "NORMAL" 상수를 만들어본다.
+- 그리고 GameLauncher 클래스 상단에 second 인자를 받는 `sleep` 함수를 다음과 같이 만든다.
+  - GAME_MODE가 DEV면, time.sleep(0) 그게 아니면 time.sleep(second)로 설정되게 한다.
+- 아래의 위치에 모두 sleep 함수를 설정해준다.
+  ```python
+  print("몬스터가 나타났다!")
+  monster = Monster()
+  monster.displayInfo()
+  sleep(3)
+  ...
+  print("플레이어의 공격 차례입니다.")
+  sleep(1)
+  ...
+  sleep(2)
+  print("몬스터의 공격 차례입니다.")
+  sleep(1)
+  ...
+  if self.player.isDead():
+    print("플레이어가 죽었습니다!")
+    print("GAME OVER")
+    self.exit()
+    break
+  sleep(2)
+  ```
+- play 함수에서 Player를 만들 때, GMAE_MODE 인자를 보내주고, Player 생성자에서 `mode`가 `dev`면 `hp = 20, atk = 5`로, 그게 아니면 기존대로 설정되게 해준다.

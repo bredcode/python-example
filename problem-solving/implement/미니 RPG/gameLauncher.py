@@ -1,6 +1,17 @@
 from player import Player
 from monster import Monster
 from cipher import Cipher
+import time
+
+MODE_DEV = "DEV"
+MODE_NORMAL = "NORMAL"
+GAME_MODE = MODE_NORMAL
+
+def sleep(second):
+    if GAME_MODE == MODE_DEV:
+        time.sleep(0)
+    else:
+        time.sleep(second)
 
 class GameLauncher():
     def __init__(self):
@@ -30,7 +41,7 @@ class GameLauncher():
     def play(self):
         if not self.player:
             name = input("캐릭터 이름을 입력해주세요 : ")
-            self.player = Player(name)
+            self.player = Player(name, GAME_MODE)
 
         while True:
             self.player.displayInfo()
@@ -46,22 +57,24 @@ class GameLauncher():
                     print("몬스터가 나타났다!")
                     monster = Monster()
                     monster.displayInfo()
-                    # time.sleep(3)
+                    sleep(3)
                     while True:
                         print("플레이어의 공격 차례입니다.")
-                        # time.sleep(2)
+                        sleep(1)
                         self.player.attack(monster)
                         if monster.isDead():
                             print("몬스터가 죽었습니다!")
                             break
+                        sleep(2)
                         print("몬스터의 공격 차례입니다.")
-                        # time.sleep(2)
+                        sleep(1)
                         monster.attack(self.player)
                         if self.player.isDead():
                             print("플레이어가 죽었습니다!")
                             print("GAME OVER")
                             self.exit()
                             break
+                        sleep(2)
                 case "2":
                     self.save()
                 case "3":
