@@ -174,8 +174,91 @@ class Object():
   - Player 클래스를 생성하며 해당 불러온 파일의 name, hp, atk를 생성자에 넣어준다.
   - play를 통해 게임을 진행시킨다.
 
-- 주의사항: `saveData.json`이 없는 경우 데이터를 불러오면 에러가 발생한다. 이때 파일이 없는 경우 `[ERROR] 저장된 파일이 없습니다.`를 출력하도록 하자
+- 주의사항: `saveData.json`이 없는 경우 데이터를 불러오면 에러가 발생한다. 이때 파일이 없는 경우 `[ERROR] 저장된 파일이 없습니다.`라는 에러를 출력하도록 하자 (hint: except FileNotFoundError)
 
 - 리팩토링 되어야할 사항
   - Player가 현재 name만 받도록 되어있다. 위 내용을 만족시킬 수 있도록 변경해보자.
   - play를 하면 항상 플레이어를 새로 생성하고 게임을 진행한다. 불러온 경우에는 새로 생성하지 않도록 해보자
+
+13. 해킹하기
+
+- 플레이어의 정보를 해킹해보고자 한다.
+- 체력을 1000, 공격력을 100으로 조작하여 데이터를 해킹해본다.
+
+14. 정보보안 강화하기
+
+- 아래와 같은 cipher.py 파일을 생성하고, 예제를 통해 어떻게 사용하는지 확인해본다.
+- 아래 모듈은 dict를 암호화 시켜 파일의 조작을 막을 수 있고, 암호를 알아야만 복호화 할 수 있도록 설계되어있다.
+- 아래 파일을 실행하기 위해서는 `pip install cryptography`을 통해 사전에 모듈을 설치하여야 한다.
+
+  ```python
+  # pip install cryptography
+  from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+  import os
+  import base64
+  import json
+
+  class Cipher():
+    # 키 생성 함수
+    def generate_key(self, password, salt):
+        kdf = Scrypt(
+            salt=salt,
+            length=32,
+            n=2**14,
+            r=8,
+            p=1,
+        )
+        key = kdf.derive(password.encode())
+        return key
+
+    # 암호화 함수
+    def encrypt(self, message, password):
+        salt = os.urandom(16)
+        key = self.generate_key(password, salt)
+        aesgcm = AESGCM(key)
+        nonce = os.urandom(12)
+
+        # 딕셔너리를 JSON 문자열로 변환
+        message_str = json.dumps(message)
+
+        encrypted_message = aesgcm.encrypt(nonce, message_str.encode(), None)
+        return base64.b64encode(salt + nonce + encrypted_message).decode()
+
+    # 복호화 함수
+    def decrypt(self, encrypted_message, password):
+        decoded_message = base64.b64decode(encrypted_message.encode())
+        salt = decoded_message[:16]
+        nonce = decoded_message[16:28]
+        ciphertext = decoded_message[28:]
+        key = self.generate_key(password, salt)
+        aesgcm = AESGCM(key)
+        decrypted_message = aesgcm.decrypt(nonce, ciphertext, None)
+
+        # JSON 문자열을 딕셔너리로 변환
+        return json.loads(decrypted_message.decode())
+
+  """
+  # 예제
+  cipher = Cipher()
+  password = "your_password"
+  message = {"name": "John", "age": 30}
+  message = json.dumps(message)
+  encrypted_message = cipher.encrypt(message, password)
+  print(f"Encrypted: {encrypted_message}")
+
+  decrypted_message = cipher.decrypt(encrypted_message, password)
+  print(f"Decrypted: {decrypted_message}")
+  """
+  ```
+
+15. save 시 파일 암호화하기
+
+- 저장 파일을 암호화한다.
+- save 함수를 호출 할 때, `암호를 입력해주세요: `와 함께 암호를 입력받도록 하고, 암호화할 때 암호와 함께 암호화한다.
+
+16. load 시 파일 복호화하기
+
+- 저장 파일을 복호화한다.
+- load 함수를 호출 할 때, `암호를 입력해주세요: `와 함께 암호를 입력받도록 하고, 복호화할 때 암호화 함께 복호화한다.
+- except Exception을 추가하여 암호가 틀렸을 경우 `[ERROR] 암호가 틀렸습니다.`가 호출되도록 한다.

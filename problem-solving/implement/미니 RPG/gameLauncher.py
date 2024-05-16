@@ -1,6 +1,6 @@
 from player import Player
 from monster import Monster
-import json
+from cipher import Cipher
 
 class GameLauncher():
     def __init__(self):
@@ -76,21 +76,24 @@ class GameLauncher():
             "hp": self.player.hp,
             "atk": self.player.atk 
         }
-
-        saveData = json.dumps(playerData)
+        password = input("암호를 입력해주세요: ")
+        saveData = Cipher().encrypt(playerData, password)
         with open('saveData.json', 'w') as file:
             file.write(saveData)
         return
 
     def load(self):
+        password = input("암호를 입력해주세요: ")
         try:
             with open('saveData.json', 'r') as file:
                 saveData = file.read()
-                playerData = json.loads(saveData)
+                playerData = Cipher().decrypt(saveData, password)
                 self.player = Player(playerData["name"], playerData["hp"], playerData["atk"])
                 self.play()
-        except Exception as e:
+        except FileNotFoundError:
             print("[ERROR] 저장된 파일이 없습니다.")
+        except Exception:
+            print("[ERROR] 암호가 틀렸습니다.")
         return
 
     def exit(self):
