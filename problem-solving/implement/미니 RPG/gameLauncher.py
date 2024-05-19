@@ -91,14 +91,14 @@ class GameLauncher():
         }
         password = input("암호를 입력해주세요: ")
         saveData = Cipher().encrypt(playerData, password)
-        with open('saveData.json', 'w') as file:
+        with open('saveData.save', 'w') as file:
             file.write(saveData)
         return
 
     def load(self):
         password = input("암호를 입력해주세요: ")
         try:
-            with open('saveData.json', 'r') as file:
+            with open('saveData.save', 'r') as file:
                 saveData = file.read()
                 playerData = Cipher().decrypt(saveData, password)
                 self.player = Player(playerData["name"], playerData["hp"], playerData["atk"])
