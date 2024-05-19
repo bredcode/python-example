@@ -43,13 +43,12 @@ class Cipher():
       
       # JSON 문자열을 딕셔너리로 변환
       return json.loads(decrypted_message.decode())
-        
+
 """
 # 예제
 cipher = Cipher()
 password = "your_password"
 message = {"name": "John", "age": 30}
-message = json.dumps(message)
 encrypted_message = cipher.encrypt(message, password)
 print(f"Encrypted: {encrypted_message}")
 
