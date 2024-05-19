@@ -41,7 +41,7 @@ class GameLauncher():
     def play(self):
         if not self.player:
             name = input("캐릭터 이름을 입력해주세요 : ")
-            self.player = Player(name, GAME_MODE)
+            self.player = Player(GAME_MODE, name)
 
         while True:
             self.player.displayInfo()
