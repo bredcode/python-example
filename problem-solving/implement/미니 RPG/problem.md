@@ -159,7 +159,7 @@ class Object():
 - 플레이어의 상태를 저장하는 부분
 - 현재 가지고 있는 name, hp, atk를 저장하고자 한다.
 - 다음 순서에 따라 save 함수를 구현해본다.
-  - name, hp, atk를 하나의 dict 변수에 저장한다.
+  - name, hp, atk를 하나의 dict 타입 playerData변수에 저장한다.
   - json 모듈의 json.dumps를 이용하여 dict를 str 형태로 변환해준다.
   - 변환된 str 데이터를 `saveData.json`에 저장한다.
 
