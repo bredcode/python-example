@@ -2,6 +2,7 @@ from player import Player
 from monster import Monster
 from cipher import Cipher
 import time
+import os
 
 MODE_DEV = "DEV"
 MODE_NORMAL = "NORMAL"
@@ -64,6 +65,7 @@ class GameLauncher():
                         self.player.attack(monster)
                         if monster.isDead():
                             print("몬스터가 죽었습니다!")
+                            self.player.getMoney(monster.dropMoney())
                             break
                         sleep(2)
                         print("몬스터의 공격 차례입니다.")
@@ -96,17 +98,27 @@ class GameLauncher():
         return
 
     def load(self):
-        password = input("암호를 입력해주세요: ")
-        try:
-            with open('saveData.save', 'r') as file:
-                saveData = file.read()
-                playerData = Cipher().decrypt(saveData, password)
-                self.player = Player(playerData["name"], playerData["hp"], playerData["atk"])
-                self.play()
-        except FileNotFoundError:
-            print("[ERROR] 저장된 파일이 없습니다.")
-        except Exception:
-            print("[ERROR] 암호가 틀렸습니다.")
+        errorCount = 3
+        while errorCount > 0:
+            password = input("암호를 입력해주세요: ")
+            try:
+                with open('saveData.save', 'r') as file:
+                    saveData = file.read()
+                    playerData = Cipher().decrypt(saveData, password)
+                    self.player = Player(playerData["name"], playerData["hp"], playerData["atk"])
+                    self.play()
+                    break
+            except FileNotFoundError:
+                print("[ERROR] 저장된 파일이 없습니다.")
+                return
+            except Exception:
+                errorCount -= 1
+                if errorCount == 0:
+                    print("3번 연속 암호를 틀려 파일을 삭제합니다")
+                    os.remove('saveData.save')
+                else:
+                    print(f"[ERROR] 암호가 틀렸습니다. 앞으로 {errorCount}번 기회가 남았습니다.")
+
         return
 
     def exit(self):

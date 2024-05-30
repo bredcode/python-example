@@ -12,3 +12,6 @@ class Monster(Object):
     
     def displayInfo(self, objType = None):
         super().displayInfo("몬스터")
+
+    def dropMoney(self):
+        return random.randint(10, 100)
