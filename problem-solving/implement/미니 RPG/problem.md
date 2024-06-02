@@ -266,7 +266,7 @@ class Object():
 17. 리팩토링 진행하기
 
 - 현재 `saveData.json`라고 파일이 관리되고 있다. 하지만 현재 파일은 `json`이 아닌 암호화로 이루어진 파일이다. 따라서 확장자를 `saveData.json`이 아닌 `saveData.save`로 변경하자
-- 현재 `object.py`의 `displayInfo` 함수에 `self.displayInfo(self.name)`로 되어있다. 이때 그럼 self.name이 출력되어야 할 것 같은데 왜 "플레이어" 혹은 "몬스터" 가 출력되는지 생각해보자.
+- 현재 `object.py`의 `takeDamage`함수에서 `displayInfo`를 보면 `self.displayInfo(self.name)`로 되어있다. 이때 그럼 self.name이 출력되어야 할 것 같은데 왜 "플레이어" 혹은 "몬스터" 가 출력되는지 생각해보자.
 - self.name을 지워도 출력이 잘 되는 이유를 생각해보자.
 
 18. 개발자 모드
