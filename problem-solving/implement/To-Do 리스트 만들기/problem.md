@@ -44,7 +44,7 @@ if __name__ == "__main__":
     ids = []
     for id in range(5):
       ids.append(id)
-      todo = Todo(id, f"할 일 {id}", f"할 일 {id} 설명")
+      todo = Todo(id, f"할 일 {id}", f"할 일 {id} 설명", False)
       manager.create_todo(todo)
 
     print("모든 할 일:", manager.get_todos())
