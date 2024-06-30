@@ -32,6 +32,9 @@ class Todo:
         return f"Todo(id={self.id}, title={self.title}, description={self.description}, completed={self.completed})\n"
 
 class TodoManager:
+    def __init__(self):
+        self.todos = []
+
     create_todo, get_todos, get_todo, update_todo, delete_todo
         ... 작성
 
