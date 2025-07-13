@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>To-Do List</title>
+    <script>
+      // 상태 토글
+      function toggleTodo(index) {
+        fetch(`/todos/${index}`, {
+          method: "PUT",
+        }).then(() => {
+          window.location.reload();
+        });
+      }
+
+      // 할 일 삭제
+      function deleteTodo(index) {
+        if (confirm("정말 삭제하시겠습니까?")) {
+          fetch(`/todos/${index}`, {
+            method: "DELETE",
+          }).then(() => {
+            window.location.reload();
+          });
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>📋 나의 할 일 목록</h1>
+    <form action="/todos" method="post">
+      <input type="text" name="task" placeholder="할 일을 입력하세요" />
+      <button type="submit">추가</button>
+    </form>
+
+    <ul>
+      {% for todo in todos %}
+      <li>
+        <span onclick="toggleTodo({{ loop.index0 }})" style="cursor: pointer">
+          {% if todo.done %} ✅ {{ todo.task }} {% else %} 🚧 {{ todo.task }} {% endif %}
+        </span>
+        <button onclick="deleteTodo({{ loop.index0 }})" style="margin-left: 10px">🗑️</button>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
