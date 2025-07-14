@@ -3,7 +3,7 @@ class Member:
         self.id = id
         self.pw = pw
 
-class MemberRegister:
+class System:
     def __init__(self):
         self.member = {}
 
@@ -47,7 +47,7 @@ def display():
   print("5. 종료")
   print("=========================\n")
 
-memberRegister = MemberRegister()
+system = System()
 
 while True:
   display()
@@ -58,23 +58,23 @@ while True:
     id = input("ID : ")
     pw = input("PW : ")
     member = Member(id, pw)
-    memberRegister.signUp(id, pw)
+    system.signUp(id, pw)
 
   elif num == "2":
     print("[로그인]")
     id = input("ID : ")
     pw = input("PW : ")
-    memberRegister.login(id, pw)
+    system.login(id, pw)
 
   elif num == "3":
     print("[회원 전체 조회]")
-    memberRegister.viewMembers()
+    system.viewMembers()
 
   elif num == "4":
     print("[회원 삭제]")
     id = input("ID : ")
     pw = input("PW : ")
-    memberRegister.deleteMember(id, pw)
+    system.deleteMember(id, pw)
 
   elif num == "5":
      break
