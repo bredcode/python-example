@@ -23,7 +23,7 @@ class MemberRegister:
       else:
         print(f"{id} does not exist.")
 
-    def viewAllMembers(self):
+    def viewMembers(self):
       for [id, pwd] in self.member.items():
         print(f"ID: {id}")
         print(f"PWD: {pwd}")
@@ -68,7 +68,7 @@ while True:
 
   elif num == "3":
     print("[회원 전체 조회]")
-    memberRegister.viewAllMembers()
+    memberRegister.viewMembers()
 
   elif num == "4":
     print("[회원 삭제]")
