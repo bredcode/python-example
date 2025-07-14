@@ -1,12 +1,12 @@
 ### 문제
 
-회원가입 및 로그인 시스템을 구현하고자 합니다. 사용자는 `Member` 클래스와 `MemberSystem` 클래스를 사용하여 이 시스템을 구축해야 합니다. `Member` 클래스는 회원의 정보를 나타내며, `MemberSystem` 클래스는 회원 관리(등록, 로그인, 조회, 삭제) 기능을 담당합니다. 이 시스템은 사용자로부터 회원의 아이디와 비밀번호를 입력받아 새로운 회원을 등록하고, 등록된 회원 정보를 조회, 로그인 검증, 그리고 회원 정보 삭제 기능을 제공해야 합니다.
+회원가입 및 로그인 시스템을 구현하고자 합니다. 사용자는 `Member` 클래스와 `System` 클래스를 사용하여 이 시스템을 구축해야 합니다. `Member` 클래스는 회원의 정보를 나타내며, `System` 클래스는 회원 관리(등록, 로그인, 조회, 삭제) 기능을 담당합니다. 이 시스템은 사용자로부터 회원의 아이디와 비밀번호를 입력받아 새로운 회원을 등록하고, 등록된 회원 정보를 조회, 로그인 검증, 그리고 회원 정보 삭제 기능을 제공해야 합니다.
 
 ### 요구 사항
 
 1.  **`Member` 클래스 구현**: 회원의 아이디(`id`)와 비밀번호(`pw`)를 속성으로 가집니다. 이 클래스는 회원의 기본 정보를 저장하는 역할을 합니다.
 
-2.  **`MemberSystem` 클래스 구현**:
+2.  **`System` 클래스 구현**:
 
     - `__init__` 메소드로, 클래스가 인스턴스화될 때 내부에 `member` 딕셔너리를 생성합니다. 이 딕셔너리는 회원의 아이디를 키로, `Member` 인스턴스를 값으로 저장합니다.
 
@@ -39,7 +39,7 @@ class Member:
   def __init__(self):
     pass
 
-class MemberSystem:
+class System:
   # 위 지문을 참고하여 코드를 작성해주세요
   def __init__(self):
     pass
@@ -53,7 +53,7 @@ def display():
   print("5. 종료")
   print("=========================\n")
 
-memberSystem = MemberSystem()
+system = System()
 
 while True:
   display()
@@ -64,23 +64,23 @@ while True:
     id = input("ID : ")
     pw = input("PW : ")
     member = Member(id, pw)
-    memberSystem.register(id, pw)
+    system.register(id, pw)
 
   elif num == "2":
     print("[로그인]")
     id = input("ID : ")
     pw = input("PW : ")
-    memberSystem.login(id, pw)
+    system.login(id, pw)
 
   elif num == "3":
     print("[회원 전체 조회]")
-    memberSystem.viewAllMembers()
+    system.viewAllMembers()
 
   elif num == "4":
     print("[회원 삭제]")
     id = input("ID : ")
     pw = input("PW : ")
-    memberSystem.deleteMember(id, pw)
+    system.deleteMember(id, pw)
 
   elif num == "5":
      break
