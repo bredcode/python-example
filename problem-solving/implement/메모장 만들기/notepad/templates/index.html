@@ -1,0 +1,25 @@
+<!DOCTYPE html> <!--문서가 HTML5로 작성되었음을 선언 -->
+<html lang="ko"> <!-- 페이지의 언어를 한국어로 설정 -->
+  <head>
+    <meta charset="UTF-8" /> <!-- 문자 인코딩을 UTF-8로 설정하여 다양한 문자가 제대로 표시되도록 함 -->
+    <title>메모장</title> <!-- 브라우저 탭에 표시될 제목을 "메모장"으로 설정 -->
+  </head>
+  <body>
+    <h1>📝 메모장</h1>
+
+    <form action="/add" method="POST"> <!-- 사용자가 입력한 데이터를 서버로 전송하는 폼, action="/add"는 POST 방식으로 /add URL을 전송하는 과정 -->
+      <input name="note" placeholder="메모를 작성하세요" required></input> <!-- 사용자 입력 필드, placeholder은 텍스트 필드에 미리 보여줄 설명 텍스트 -->
+      <button type="submit">저장</button> <!-- 사용자가 "저장" 버튼을 클릭하면 폼이 제출되고, 메모가 서버로 전송 -->
+    </form>
+
+    <h2>저장된 메모들</h2> <!-- h2 태그로 "저장된 메모들"을 표시 -->
+    <ul> <!-- 메모 목록을 표시할 순서 없는 목록(ul) -->
+      {% for note in notes %} <!-- flask에서의 for문 -->
+      <li> <!-- 각 메모를 목록 항목(li)으로 표시 -->
+        {{ note }}
+        <a href="{{ url_for('delete', index=loop.index0) }}">🗑️ 삭제</a> <!-- a 태그를 통해 각 메모 항목 옆에 "삭제" 링크를 추가 -->
+      </li>
+      {% endfor %} <!-- for 반복문이 끝나는 지점 -->
+    </ul>
+  </body>
+</html>
